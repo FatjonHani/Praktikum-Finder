@@ -127,27 +127,17 @@ max_seiten = 5
 
 ---
 
-## Jeden Tag automatisch suchen (optional)
+## Später wieder suchen
 
-Terminal im Projektordner öffnen (siehe Schnellstart, Schritt 3). In der zweiten Zeile `mein-profil` durch deinen Profilnamen ersetzen (mehrere mit Leerzeichen getrennt, oder weglassen für alle Profile), dann die fünf Zeilen **zusammen** reinkopieren:
+Du musst nicht jedes Mal in den Ordner wechseln. Diese eine Zeile funktioniert in jeder neuen PowerShell – `mein-profil` durch deinen Profilnamen ersetzen:
 
 ```powershell
-$py = (Get-Command python).Source
-$a = New-ScheduledTaskAction -Execute $py -Argument "praktikum_finder.py mein-profil" -WorkingDirectory "$PWD"
-$b = New-ScheduledTaskAction -Execute "explorer.exe" -Argument "$PWD\ergebnisse"
-$t = New-ScheduledTaskTrigger -Daily -At 8am
-Register-ScheduledTask -TaskName "Jobsuche" -Action $a,$b -Trigger $t -Settings (New-ScheduledTaskSettingsSet -StartWhenAvailable)
+cd "$env:USERPROFILE\Praktikum-Finder"; python praktikum_finder.py mein-profil
 ```
 
-Ab jetzt sucht Windows jeden Tag um 8 Uhr und öffnet danach den Ergebnisordner. Ist der Computer um 8 aus, wird es beim nächsten Hochfahren nachgeholt.
+Liegt dein Projektordner woanders (z. B. auf dem Desktop), den Pfad im `cd`-Teil anpassen – oder einfach Schnellstart Schritt 3 nutzen.
 
-| Was | Befehl |
-|---|---|
-| Sofort suchen, ohne zu warten | `Start-ScheduledTask -TaskName "Jobsuche"` |
-| Andere Uhrzeit, z. B. 22 Uhr | `Set-ScheduledTask -TaskName "Jobsuche" -Trigger (New-ScheduledTaskTrigger -Daily -At 10pm)` |
-| Ausschalten | `Unregister-ScheduledTask -TaskName "Jobsuche"` |
-
-> Wichtig: Wenn du den Projektordner später verschiebst, Automatik ausschalten und neu anlegen.
+> **Warum keine automatische Suche per Aufgabenplanung?** Virenscanner wie Avast halten Skripte, die sich selbst regelmäßig starten, oft für Schadsoftware und schalten sie still ab. Deshalb startest du die Suche bewusst selbst – das ist zuverlässiger.
 
 ---
 
@@ -186,6 +176,7 @@ Trennzeichen ist das Semikolon (`;`), damit ein deutsches Excel die Spalten glei
 | `HTTP Error 403/429` | karriere.at blockiert gerade zu viele Anfragen. Später nochmal versuchen. |
 | `KeyError: 'data'` | karriere.at hat die Seite umgebaut – das Skript muss angepasst werden. |
 | Umlaute in Excel kaputt | Excel: **Daten → Aus Text/CSV**, Codierung **UTF-8**, Trennzeichen **Semikolon**. |
+| Virenscanner schlägt Alarm | Das Projekt enthält nur `praktikum_finder.py` und Textdateien. Keine `.bat`-Dateien anlegen und keine geplanten Aufgaben einrichten – genau das löst Fehlalarme aus. |
 | CSV lässt sich nicht speichern | Datei ist noch in Excel offen. Excel schließen und neu starten. |
 
 ---
