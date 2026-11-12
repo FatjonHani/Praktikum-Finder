@@ -127,32 +127,24 @@ max_seiten = 5
 
 ---
 
-## Startknopf: Doppelklick statt Befehle
-
-Im Projektordner liegt `jobsuche.bat`. **Doppelklick** darauf startet alle Profile und öffnet danach den Ordner mit den Ergebnissen.
-
-Tipp: Lösch die Beispielprofile, die du nicht brauchst (oder setz ein `_` vor den Dateinamen), dann läuft nur deine eigene Suche.
-
-**Auf den Desktop legen:** Rechtsklick auf `jobsuche.bat` → *Senden an* → *Desktop (Verknüpfung erstellen)*.
-
----
-
 ## Jeden Tag automatisch suchen (optional)
 
-Terminal im Projektordner öffnen (siehe Schnellstart, Schritt 3) und diese vier Zeilen **zusammen** reinkopieren:
+Terminal im Projektordner öffnen (siehe Schnellstart, Schritt 3). In der zweiten Zeile `mein-profil` durch deinen Profilnamen ersetzen (mehrere mit Leerzeichen getrennt, oder weglassen für alle Profile), dann die fünf Zeilen **zusammen** reinkopieren:
 
 ```powershell
-$a = New-ScheduledTaskAction -Execute "$PWD\jobsuche.bat" -WorkingDirectory "$PWD"
+$py = (Get-Command python).Source
+$a = New-ScheduledTaskAction -Execute $py -Argument "praktikum_finder.py mein-profil" -WorkingDirectory "$PWD"
+$b = New-ScheduledTaskAction -Execute "explorer.exe" -Argument "$PWD\ergebnisse"
 $t = New-ScheduledTaskTrigger -Daily -At 8am
-$s = New-ScheduledTaskSettingsSet -StartWhenAvailable
-Register-ScheduledTask -TaskName "Jobsuche" -Action $a -Trigger $t -Settings $s
+Register-ScheduledTask -TaskName "Jobsuche" -Action $a,$b -Trigger $t -Settings (New-ScheduledTaskSettingsSet -StartWhenAvailable)
 ```
 
-Ab jetzt sucht Windows jeden Morgen um 8 Uhr und öffnet die Ergebnisse. Ist der Computer um 8 aus, wird es beim nächsten Hochfahren nachgeholt.
+Ab jetzt sucht Windows jeden Tag um 8 Uhr und öffnet danach den Ergebnisordner. Ist der Computer um 8 aus, wird es beim nächsten Hochfahren nachgeholt.
 
-| Was | So geht's |
+| Was | Befehl |
 |---|---|
-| Andere Uhrzeit | Zuerst ausschalten (siehe unten), dann neu anlegen mit z. B. `-At 7am` |
+| Sofort suchen, ohne zu warten | `Start-ScheduledTask -TaskName "Jobsuche"` |
+| Andere Uhrzeit, z. B. 22 Uhr | `Set-ScheduledTask -TaskName "Jobsuche" -Trigger (New-ScheduledTaskTrigger -Daily -At 10pm)` |
 | Ausschalten | `Unregister-ScheduledTask -TaskName "Jobsuche"` |
 
 > Wichtig: Wenn du den Projektordner später verschiebst, Automatik ausschalten und neu anlegen.
