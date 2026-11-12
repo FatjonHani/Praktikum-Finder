@@ -1,0 +1,26 @@
+# Data-Science-Praktika in ganz Österreich
+
+name = "Data-Science-Praktika"
+beschreibung = "Praktika in Data Science, Data Analytics und Machine Learning"
+
+suchbegriffe = [
+    "data science praktikum",
+    "data scientist praktikum",
+    "data analyst praktikum",
+    "machine learning praktikum",
+    "data science internship",
+]
+
+ort = ""
+
+pflicht_woerter = [
+    "data", "daten", "machine learning", "ml", "ki", "ai",
+    "analytics", "analyst", "python", "statistik",
+]
+
+ausschluss_woerter = []
+
+# nur Praktika / Internships
+jobart_woerter = ["praktik", "intern", "trainee", "werkstudent"]
+
+max_seiten = 10

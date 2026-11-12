@@ -1,0 +1,21 @@
+# Jobs, bei denen ausdrücklich ein HTL-Abschluss gesucht wird
+
+name = "HTL-Absolventen"
+beschreibung = "Stellen, die ausdrücklich HTL-Absolventen suchen"
+
+suchbegriffe = [
+    "htl absolvent",
+    "htl abschluss",
+    "htl",
+]
+
+ort = ""
+
+# "htl" muss im Titel oder in der Kurzbeschreibung stehen
+pflicht_woerter = ["htl"]
+
+ausschluss_woerter = ["praktik", "lehrling", "ferialjob"]
+
+jobart_woerter = []
+
+max_seiten = 5

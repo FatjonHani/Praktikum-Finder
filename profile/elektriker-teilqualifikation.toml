@@ -1,0 +1,36 @@
+# Elektriker-Jobs für Leute mit Teilqualifikation / ohne vollen Lehrabschluss
+#
+# Tipp: Firmen schreiben fast nie "Teilqualifikation" in die Anzeige.
+# Treffer bringen eher Begriffe wie "Helfer", "Hilfskraft" oder "ohne Lehrabschluss".
+
+name = "Elektriker (Teilqualifikation)"
+beschreibung = "Elektro-Helfer, Monteure und Jobs ohne vollen Lehrabschluss"
+
+suchbegriffe = [
+    "elektriker helfer",
+    "elektro hilfskraft",
+    "elektriker ohne lehrabschluss",
+    "elektromonteur",
+    "teilqualifikation elektro",
+]
+
+ort = ""
+
+pflicht_woerter = []
+
+# Der Jobtitel muss nach Elektro-/Montage-Arbeit klingen
+titel_woerter = [
+    "elektriker", "elektro", "monteur", "montage",
+    "helfer", "hilfskraft", "haustechnik", "betriebstechnik",
+]
+
+# Stellen, die deutlich mehr Ausbildung verlangen (oder Lehrstellen sind), aussortieren
+ausschluss_woerter = [
+    "meister", "ingenieur", "engineer", "projekt", "manager", "leiter", "leitung",
+    "konstrukt", "zeichner", "planer", "senior", "lehre", "lehrling", "lehrstelle",
+    "lehrausbildung", "account",
+]
+
+jobart_woerter = []
+
+max_seiten = 5

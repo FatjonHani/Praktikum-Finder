@@ -1,0 +1,8 @@
+# Persönliche Suchergebnisse nicht auf GitHub hochladen
+ergebnisse/
+*.csv
+
+# Python-Zwischendateien
+__pycache__/
+*.pyc
+.venv/

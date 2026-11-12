@@ -1,0 +1,54 @@
+# ============================================================================
+#  VORLAGE für ein eigenes Suchprofil
+# ----------------------------------------------------------------------------
+#  So legst du ein neues Profil an:
+#    1. Diese Datei kopieren und umbenennen, z. B. in "mein-profil.toml"
+#       (ohne "_" am Anfang – Dateien mit "_" werden ignoriert).
+#    2. Werte unten anpassen und speichern.
+#    3. Starten:  python praktikum_finder.py mein-profil
+#  Die Ergebnisse landen in "ergebnisse/mein-profil.csv".
+#
+#  Regeln:  Texte immer in "Anführungszeichen", Listen in [eckigen Klammern],
+#           Einträge mit Komma getrennt. Zeilen mit # sind Kommentare.
+#           Groß-/Kleinschreibung ist egal.
+# ============================================================================
+
+# Anzeigename des Profils
+name = "Mein Profil"
+
+# Kurze Beschreibung (optional)
+beschreibung = "Wonach dieses Profil sucht"
+
+# Jeder Begriff wird einzeln auf karriere.at gesucht – wie im Suchfeld der Website.
+suchbegriffe = [
+    "suchbegriff eins",
+    "suchbegriff zwei",
+]
+
+# Ort eingrenzen, z. B. "wien", "graz", "linz", "salzburg", "tirol".
+# Leer lassen ("") = ganz Österreich.
+ort = ""
+
+# Titel ODER Kurzbeschreibung des Jobs muss mindestens EINES dieser Wörter enthalten.
+# Teilwörter zählen: "elektr" passt auf "Elektriker", "Elektrotechnik", ...
+# Wörter mit bis zu 3 Buchstaben (z. B. "htl", "ki") zählen nur als ganzes Wort.
+# Leere Liste [] = kein Filter.
+pflicht_woerter = []
+
+# Strenger: Der JOBTITEL muss mindestens EINES dieser Wörter enthalten.
+# Gut, um unpassende Treffer loszuwerden. Leere Liste [] = kein Filter.
+titel_woerter = []
+
+# Kommt eines dieser Wörter im TITEL vor, wird der Job aussortiert.
+# Beispiel: ["senior", "leiter", "meister"]
+ausschluss_woerter = []
+
+# Nur bestimmte Jobarten behalten. Geprüft werden Anstellungsart und Titel.
+# Beispiele: ["praktik", "intern"] = nur Praktika
+#            ["teilzeit"]          = nur Teilzeit
+#            ["lehre", "lehrling"] = nur Lehrstellen
+# Leere Liste [] = alle Jobarten.
+jobart_woerter = []
+
+# Wie viele Ergebnisseiten pro Suchbegriff höchstens geladen werden (ca. 15-20 Jobs pro Seite).
+max_seiten = 5
