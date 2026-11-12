@@ -137,8 +137,8 @@ Als Trennzeichen dient das Semikolon (`;`). So zeigt ein deutsches Excel die Spa
 
 ## Projekt von GitHub herunterladen (für Freunde)
 
-1. Auf der GitHub-Seite des Projekts auf **Code → Download ZIP** klicken und die ZIP-Datei entpacken.
-   (Oder mit Git: `git clone <link-zum-repository>`)
+1. Auf https://github.com/FatjonHani/Praktikum-Finder auf **Code → Download ZIP** klicken und die ZIP-Datei entpacken.
+   (Oder mit Git: `git clone https://github.com/FatjonHani/Praktikum-Finder.git`)
 2. Python 3.11+ installieren (siehe oben).
 3. In `profile/` ein eigenes Profil anlegen (siehe „Eigenes Profil anlegen“).
 4. Im entpackten Ordner `python praktikum_finder.py <dein-profil>` ausführen.
